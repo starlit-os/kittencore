@@ -2,13 +2,12 @@
 
 set -euox pipefail
 
+dnf -y install 'dnf5-command(versionlock)'
+dnf -y install 'dnf5-command(config-manager)'
+dnf config-manager setopt fedora-cisco-openh264.enabled=0
 dnf -y update
-dnf -y install 'dnf-command(versionlock)'
 dnf versionlock add kernel kernel-devel kernel-devel-matched kernel-core kernel-modules kernel-modules-core kernel-modules-extra kernel-uki-virt
 
-dnf -y install 'dnf-command(config-manager)'
-dnf config-manager --set-enabled crb
-dnf -y install epel-release
 
 # Install ublue-os stuff
 dnf install -y \
@@ -57,14 +56,6 @@ git clone https://github.com/coreos/fedora-coreos-config
 cd fedora-coreos-config
 git checkout stable
 cd overlay.d
-# remove overlays which should not be used on CentOS
-# no composefs by default on CentoOS stream9
-rm -fr 08composefs
-# remove fedora specific stuff
-rm -fr 15fcos/usr/lib/dracut
-rm -fr 15fcos/usr/lib/motd.d
-rm -fr 15fcos/usr/lib/systemd
-rm -fr 15fcos/usr/libexec
 # zincati should not even exist in a bootc image
 rm -fr 16disable-zincati
 # now try to apply

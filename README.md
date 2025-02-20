@@ -1,7 +1,7 @@
-# AlmaLinux Kitten CoreOS
+# Kitten CoreOS
 
 
-AlmaLinux Kitten-based bootc image with packages and overlays from CoreOS preinstalled.
+Fedora-based bootc image with packages and overlays from CoreOS preinstalled.
 
 How this is expected to be consumed:
 
@@ -18,7 +18,7 @@ RUN bootc container lint
 
 This is expected to be:
 
-- a CentOS based alternative to Fedora CoreOS (FCOS)
+- a Fedora bootc based alternative to Fedora CoreOS (FCOS)
 - ***only*** make the minimal changes required to create a CentOS bootc image which closely matches Fedora CoreOS
 - the foundation for a CentOS based [uCore](https://projectucore.io)
 - initially not focussed on installation since FCOS ignition install can be done and rebased to CCOS

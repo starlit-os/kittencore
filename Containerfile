@@ -1,8 +1,8 @@
-ARG MAJOR_VERSION="${MAJOR_VERSION:-10-kitten}"
+ARG MAJOR_VERSION="${MAJOR_VERSION:-41}"
 
 FROM ghcr.io/ublue-os/config:latest AS config
 FROM ghcr.io/ublue-os/ucore:stable AS ucore
-FROM quay.io/almalinuxorg/almalinux-bootc:$MAJOR_VERSION as base
+FROM quay.io/fedora/fedora-bootc:$MAJOR_VERSION as base
 
 # Install/remove packages to make an image with resembles Fedora CoreOS
 COPY build.sh /tmp/build.sh

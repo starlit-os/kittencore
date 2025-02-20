@@ -1,7 +1,7 @@
 export repo_organization := env("GITHUB_REPOSITORY_OWNER", "starlit-os")
 export image_name := env("IMAGE_NAME", "kittencore")
-export centos_version := env("CENTOS_VERSION", "10-kitten")
-export default_tag := env("DEFAULT_TAG", "latest")
+export centos_version := env("CENTOS_VERSION", "41")
+export default_tag := env("DEFAULT_TAG", "fedora-latest")
 
 # work around issue with upstream image builder,
 # should converge back on upstream (quay.io/centos-bootc/bootc-image-builder:latest)
@@ -94,7 +94,7 @@ build $target_image=image_name $tag=default_tag:
     # LABELS+=("--label" "ostree.linux=${kernel_release}")
     LABELS+=("--label" "io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/ccos/main/README.md")
     LABELS+=("--label" "io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4")
-    LABELS+=("--label" "org.opencontainers.image.description=AlmaLinux Kitten-based CoreOS-style bootc images")
+    LABELS+=("--label" "org.opencontainers.image.description=Fedora-based CoreOS-style bootc images")
 
     podman build \
         "${BUILD_ARGS[@]}" \
